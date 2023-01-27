@@ -20,7 +20,7 @@ git clone https://github.com/SmallK111407/expand-plugin.git ./plugins/expandplug
 使用Gitee
 git clone https://gitee.com/SmallK111407/expand-plugin.git ./plugins/expandplugin/
 ```
-进行安装。建议使用上述命令进行安装，以便于后续更新。 管理员发送#土块更新 即可自动更新
+进行安装。建议使用上述命令进行安装，以便于后续更新。 管理员发送`#拓展更新`即可自动更新
 
 如果是手工下载的zip压缩包，请将解压后的expand-plugin文件夹（请删除压缩自带的-master后缀）放置在Yunzai目录下的plugins文件夹内。
 你可以发送`#拓展帮助`来获取菜单，`#拓展版本`看当前版本更新内容
