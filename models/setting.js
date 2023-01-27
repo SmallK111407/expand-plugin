@@ -18,7 +18,6 @@ class Setting {
 
     /** 监听文件 */
     this.watcher = { config: {}, defSet: {} }
-
   }
 
   // 配置对象化 用于锅巴插件界面填充
@@ -68,159 +67,76 @@ class Setting {
   }
 
   // 获取对应模块默认配置
-  getdefSet (apps) {
-    return this.getYaml(apps, 'defSet')
+  getdefSet (app) {
+    return this.getYaml(app, 'defSet')
   }
 
   // 获取对应模块用户配置
-  getConfig (apps) {
-    return { ...this.getdefSet(apps), ...this.getYaml(apps, 'config') }
+  getConfig (app) {
+    return { ...this.getdefSet(app), ...this.getYaml(app, 'config') }
   }
 
   // 设置对应模块用户配置
-  setConfig (apps, Object) {
-    return this.setYaml(apps, 'config', { ...this.getdefSet(apps), ...Object})
+  setConfig (app, Object) {
+    return this.setYaml(app, 'config', { ...this.getdefSet(app), ...Object})
   }
 
   // 将对象写入YAML文件
-  setYaml (apps, type, Object){
-    let file = this.getFilePath(apps, type)
+  setYaml (app, type, Object){
+    let file = this.getFilePath(app, type)
     try {
       fs.writeFileSync(file, YAML.stringify(Object),'utf8')
     } catch (error) {
-      logger.error(`[${apps}] 写入失败 ${error}`)
+      logger.error(`[${app}] 写入失败 ${error}`)
       return false
     }
   }
 
   // 读取YAML文件 返回对象
-  getYaml (apps, type) {
-    let file = this.getFilePath(apps, type)
-    if (this[type][apps]) return this[type][apps]
+  getYaml (app, type) {
+    let file = this.getFilePath(app, type)
+    if (this[type][app]) return this[type][app]
 
     try {
-      this[type][apps] = YAML.parse(fs.readFileSync(file, 'utf8'))
+      this[type][app] = YAML.parse(fs.readFileSync(file, 'utf8'))
     } catch (error) {
-      logger.error(`[${apps}] 格式错误 ${error}`)
+      logger.error(`[${app}] 格式错误 ${error}`)
       return false
     }
-    this.watch(file, apps, type)
-    return this[type][apps]
+    this.watch(file, app, type)
+    return this[type][app]
   }
 
   // 获取YAML文件目录
-  getFilePath (apps, type) {
-    if (type === 'defSet') return `${this.defPath}${apps}.yaml`
+  getFilePath (app, type) {
+    if (type === 'defSet') return `${this.defPath}${app}.yaml`
     else {
       try {
-        if (!fs.existsSync(`${this.configPath}${apps}.yaml`)) {
-          fs.copyFileSync(`${this.defPath}${apps}.yaml`, `${this.configPath}${apps}.yaml`)
+        if (!fs.existsSync(`${this.configPath}${app}.yaml`)) {
+          fs.copyFileSync(`${this.defPath}${app}.yaml`, `${this.configPath}${app}.yaml`)
         }
       } catch (error) {
-        logger.error(`拓展插件缺失默认文件[${apps}]${error}`)
+        logger.error(`拓展插件缺失默认文件[${app}]${error}`)
       }
-      return `${this.configPath}${apps}.yaml`
+      return `${this.configPath}${app}.yaml`
     }
   }
 
 
   // 监听配置文件
-  watch (file, apps, type = 'defSet') {
-
-    if (this.watcher[type][apps]) return
+  watch (file, app, type = 'defSet') {
+    if (this.watcher[type][app]) return
 
     const watcher = chokidar.watch(file)
     watcher.on('change', path => {
-      delete this[type]
-      logger.mark(`[拓展插件][修改配置文件][${type}][${apps}]`)
-      if (this[`change_${apps}`]) {
-        this[`change_${apps}`]()
+      delete this[type][app]
+      logger.mark(`[拓展插件][修改配置文件][${type}][${app}]`)
+      if (this[`change_${app}`]) {
+        this[`change_${app}`]()
       }
     })
-    this.watcher[type] = watcher
+    this.watcher[type][app] = watcher
   }
-/**
-   * 原神角色id转换角色名字
-   */
-roleIdToName (id) {
-  let name = this.getdefSet('role' , 'name')
-  if (name[id]) {
-    return name[id][0]
-  }
-
-  return ''
-}
-
-/** 原神角色别名转id */
-roleNameToID (keyword) {
-  if (!isNaN(keyword)) keyword = Number(keyword)
-  this.getAbbr()
-  let roelId = this.nameID.get(String(keyword))
-  return roelId || false
-}
-/** 获取角色别名 */
-getAbbr () {
-  if (this.nameID) return
-
-  this.nameID = new Map()
-
-  let nameArr = this.getdefSet('role', 'name')
-  let nameArrUser = this.getConfig('role', 'name')
-
-  let nameID = {}
-
-  for (let i in nameArr) {
-    nameID[nameArr[i][0]] = i
-    for (let abbr of nameArr[i]) {
-      this.nameID.set(String(abbr), i)
-    }
-  }
-
-  for (let i in nameArrUser) {
-    for (let abbr of nameArrUser[i]) {
-      this.nameID.set(String(abbr), nameID[i])
-    }
-  }
-}
-
-/**
-   * 获取消息内原神角色名称，uid
-   * @param msg 判断消息
-   * @param filterMsg 过滤消息
-   * @return roleId 角色id
-   * @return name 角色名称
-   * @return alias 当前别名
-   * @return uid 游戏uid
-   */
-getRole (msg, filterMsg = '') {
-  let alias = msg.replace(/#|老婆|老公|[1|2|5-9][0-9]{8}/g, '').trim()
-  if (filterMsg) {
-    alias = alias.replace(new RegExp(filterMsg, 'g'), '').trim()
-  }
-
-  /** 判断是否命中别名 */
-  let roleId = this.roleNameToID(alias)
-  if (!roleId) return false
-  /** 获取uid */
-  let uid = this.getMsgUid(msg) || ''
-
-  return {
-    roleId,
-    alias,
-    name: this.roleIdToName(roleId)
-  }
-}
-
-cpCfg (apps) {
-  if (!fs.existsSync('./plugins/expand-plugin/config')) {
-    fs.mkdirSync('./plugins/expand-plugin/config')
-  }
-
-  let set = `./plugins/expand-plugin/config/${apps}.yaml`
-  if (!fs.existsSync(set)) {
-    fs.copyFileSync(`./plugins/expand-plugin/defSet/${apps}.yaml`, set)
-  }
-}
 }
 
 export default new Setting()
