@@ -21,8 +21,8 @@ export function supportGuoba () {
         // 配置项 schemas
         schemas: [{
           field: 'RecordHelp.enable',
-          label: '适用于TRSS-Plugin的记录帮助',
-          bottomHelpMessage: '是否启用该功能',
+          label: '记录帮助',
+          bottomHelpMessage: '是否覆盖云崽的记录帮助',
           component: 'Switch'
         }],
 
