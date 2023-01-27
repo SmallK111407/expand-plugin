@@ -1,0 +1,22 @@
+{
+  "name": "expand-plugin",
+  "version": "1.0.1",
+  "description": "Yunzai-Bot拓展插件",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/SmallK071114/expand-plugin.git"
+  },
+  "keywords": [
+    "Yunzai-Bot",
+    "expand-plugin"
+  ],
+  "author": "SunRyK",
+  "license": "MIT",
+  "dependencies": {
+  }
+}
