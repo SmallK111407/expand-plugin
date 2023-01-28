@@ -12,9 +12,13 @@ export default class Tomorrow extends base {
     this.model = 'todayMaterial'
   }
 
-  async getData () {
-    if (moment().day() == 0 && moment().hour() > 4) {
-      this.e.reply('笨比，忘了明天是周日是吧！明明什么都可以刷！')
+    async getData () {
+    if (moment().day() === 6  && moment().hour() > 4) {
+      this.e.reply('明天周日，全部素材都可以刷哦~')
+      return false
+    }
+    if (moment().day() === 0  && moment().hour() < 4) {
+      this.e.reply('明天周日，全部素材都可以刷哦~')
       return false
     }
 
