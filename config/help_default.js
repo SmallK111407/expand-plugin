@@ -32,7 +32,7 @@ export const helpList = [{
     desc: '适配TRSS-Plugin的记录帮助教程图'
   }, {
     icon: 63,
-    title: '#刻晴攻略[123456]',
+    title: '#刻晴攻略[1234567]',
     desc: '六家的角色攻略，6可能因为图片过大发不出'
   }, {
     icon: 66,
