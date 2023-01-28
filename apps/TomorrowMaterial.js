@@ -20,7 +20,7 @@ export class todayMaterial extends plugin {
 
   /** #明日素材 */
   async tomorrow () {
-    let data = await new Today(this.e).getData()
+    let data = await new Tomorrow(this.e).getData()
     if (!data) return
     /** 生成图片 */
     let img = await puppeteer.screenshot('todayMaterial', data)
