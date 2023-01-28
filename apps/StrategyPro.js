@@ -18,7 +18,7 @@ export class strategy extends plugin {
       priority: 100,
       rule: [
         {
-          reg: '^#?(更新)?\\S+攻略([1-6])?$',
+          reg: '^#?(更新)?\\S+攻略([1-7])?$',
           fnc: 'strategy'
         },
         {
@@ -26,7 +26,7 @@ export class strategy extends plugin {
           fnc: 'strategy_help'
         },
         {
-          reg: '^#?设置默认攻略([1-6])?$',
+          reg: '^#?设置默认攻略([1-7])?$',
           fnc: 'strategy_setting'
         }
       ]
@@ -50,10 +50,12 @@ export class strategy extends plugin {
       // 来源：曉K → 废物一个
       [1582613],
       // 来源：轻松的蓝色三明治
-      [1624518]
+      [1624518],
+      // 来源：坤易
+      [22148]
     ]
 
-    this.source = ['西风驿站', '原神观测枢', '派蒙喵喵屋', 'OH是姜姜呀', '曉K', '轻松的蓝色三明治']
+    this.source = ['西风驿站', '原神观测枢', '派蒙喵喵屋', 'OH是姜姜呀', '曉K', '轻松的蓝色三明治', '坤易']
 
     this.oss = '?x-oss-process=image//resize,s_1200/quality,q_90/auto-orient,0/interlace,1/format,jpg'
   }
@@ -63,7 +65,7 @@ export class strategy extends plugin {
       fs.mkdirSync(this.path)
     }
     /** 初始化子目录 */
-    for (let subId of [1, 2, 3, 4, 5, 6]) {
+    for (let subId of [1, 2, 3, 4, 5, 6, 7]) {
       let path = this.path + '/' + subId
       if (!fs.existsSync(path)) {
         fs.mkdirSync(path)
@@ -73,7 +75,7 @@ export class strategy extends plugin {
 
   /** #心海攻略 */
   async strategy () {
-    let match = /^#?(更新)?(\S+)攻略([1-6])?$/.exec(this.e.msg)
+    let match = /^#?(更新)?(\S+)攻略([1-7])?$/.exec(this.e.msg)
 
     // let isUpdate = !!this.e.msg.includes('更新')
     let isUpdate = !!match[1]
@@ -115,21 +117,21 @@ export class strategy extends plugin {
   /** #攻略帮助 */
   async strategy_help () {
 
-    await this.e.reply('攻略帮助:\n#纳西妲攻略[123456]\n#更新艾尔海森攻略[123456]\n#设置默认攻略[123456]\n示例: 心海攻略4\n\n攻略来源:\n1——西风驿站\n2——原神观测枢\n3——派蒙喵喵屋\n4——OH是姜姜呀\n5——曉K\n6——轻松的蓝色三明治')
+    await this.e.reply('攻略帮助:\n#纳西妲攻略[1234567]\n#更新艾尔海森攻略[1234567]\n#设置默认攻略[1234567]\n示例: 心海攻略4\n\n攻略来源:\n1——西风驿站\n2——原神观测枢\n3——派蒙喵喵屋\n4——OH是姜姜呀\n5——曉K\n6——轻松的蓝色三明治\n7——坤易')
     
   }
 
   /** #设置默认攻略1 */
   async strategy_setting () {
-    let match = /^#?设置默认攻略([1-6])?$/.exec(this.e.msg)
+    let match = /^#?设置默认攻略([1-7])?$/.exec(this.e.msg)
     let set = './plugins/expand-plugin/config/StrategyPro.set.yaml'
     let config = fs.readFileSync(set, 'utf8')
     let num = Number(match[1])
     if(isNaN(num)) {
-    await this.e.reply('默认攻略设置方式为: \n#设置默认攻略[123456] \n 请增加数字1-6其中一个')
+    await this.e.reply('默认攻略设置方式为: \n#设置默认攻略[1234567] \n 请增加数字1-7其中一个')
 		return
     }
-    config = config.replace(/defaultSource: [1-6]/g, 'defaultSource: ' + Number(match[1]))
+    config = config.replace(/defaultSource: [1-7]/g, 'defaultSource: ' + Number(match[1]))
     fs.writeFileSync(set, config, 'utf8')
 
     await this.e.reply('默认攻略已设置为: ' + match[1])
