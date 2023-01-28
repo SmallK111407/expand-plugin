@@ -24,7 +24,21 @@ export function supportGuoba () {
           label: '记录帮助',
           bottomHelpMessage: '是否覆盖云崽的记录帮助',
           component: 'Switch'
-        }],
+        },{
+          field: 'CKorSKHelp.enable',
+          label: 'CK或SK帮助',
+          bottomHelpMessage: '是否覆盖ck或sk帮助',
+          component: 'Switch'
+        },{  
+          field: 'CKorSKHelp.docs',
+          label: 'ck或sk教程链接',
+          bottomHelpMessage: '发送出来的教程链接',
+          component: 'Input',
+          required: true,
+          componentProps: {
+          placeholder: '请输入链接',
+        },
+      }],
 
         getConfigData () {
             return setting.merge()
