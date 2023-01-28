@@ -1,8 +1,8 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import puppeteer from '../../../lib/puppeteer/puppeteer.js'
-import Today from '../models/tomorrow.js'
+import Tomorrow from '../models/tomorrow.js'
 
-export class todayMaterial extends plugin {
+export class TomorrowMaterial extends plugin {
   constructor () {
     super({
       name: '[拓展插件]明日素材',
