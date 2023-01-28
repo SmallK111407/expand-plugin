@@ -38,6 +38,10 @@ export const helpList = [{
     icon: 66,
     title: '#明日素材',
     desc: '基于云崽的明日素材'
+  }, {
+    icon: 64,
+    title: '#历史卡池(五星|四星)',
+    desc: '同云崽的#原石预估'
   }]
 }, {
   group: '管理命令，仅管理员可用',
