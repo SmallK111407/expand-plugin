@@ -156,7 +156,7 @@ export class strategy extends plugin {
       if (group == 4) {
         if (val.post.structured_content.includes(name + '】')) {
           let content = val.post.structured_content.replace(/\\\/\{\}/g, '')
-          let pattern = new RegExp(name + '】.*?image":"(.*?)"')
+          let pattern = new RegExp(name + '】.*?image\\\\?":\\\\?"(.*?)\\\\?"');  // 常驻角色兼容
           let imgId = pattern.exec(content)[1]
           for (let image of val.image_list) {
             if (image.image_id == imgId) {
