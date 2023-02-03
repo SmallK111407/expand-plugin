@@ -1,13 +1,13 @@
 /** 导入plugin */
 import plugin from '../../../lib/plugins/plugin.js'
-import gsCfg from '../models/gsCfg.js'
+import gsCfg from '../../../plugins/genshin/model/gsCfg.js'
 import common from '../../../lib/common/common.js'
 import { segment } from 'oicq'
 import lodash from 'lodash'
 import fs from 'node:fs'
 import fetch from 'node-fetch'
 
-gsCfg.cpCfg('StrategyPro', 'set')
+gsCfg.cpCfg('mys', 'set')
 
 export class strategy extends plugin {
   constructor () {
@@ -32,7 +32,7 @@ export class strategy extends plugin {
       ]
     })
     
-    this.set = gsCfg.getConfig('StrategyPro', 'set')
+    this.set = gsCfg.getConfig('mys', 'set')
 
     this.path = `./data/strategy`
 

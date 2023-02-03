@@ -1,4 +1,5 @@
 # 1.0.1
+* 删除多余文件
 * 添加默认覆盖云崽本身以及**xiaoyao-cvs-plugin**的`#cookie帮助``#stoken帮助`
   * 由于不知道教程来源，在此特地感谢，如有侵权联系即删
   * 可在**config/CKorSKHelp.yaml**设置关闭或教程链接

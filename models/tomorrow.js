@@ -1,9 +1,9 @@
 import moment from 'moment'
 import lodash from 'lodash'
 import base from './base.js'
-import MysInfo from './mys/mysInfo.js'
-import MysApi from './mys/mysApi.js'
-import gsCfg from './gsCfg.js'
+import MysInfo from '../../../plugins/genshin/model/mys/mysInfo.js'
+import MysApi from '../../../plugins/genshin/model/mys/mysApi.js'
+import gsCfg from '../../../plugins/genshin/model/gsCfg.js'
 import common from '../../../lib/common/common.js'
 
 export default class Tomorrow extends base {
