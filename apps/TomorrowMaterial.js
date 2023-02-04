@@ -11,7 +11,7 @@ export class TomorrowMaterial extends plugin {
       priority: 100,
       rule: [
         {
-          reg: '^#(明日|明天|下一天|第二天)*(素材|材料|天赋)[ |0-9]*$',
+          reg: '^#(明日|明天|下一天|第二天)+(素材|材料|天赋)[ |0-9]*$',
           fnc: 'tomorrow'
         }
       ]
