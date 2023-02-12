@@ -124,7 +124,7 @@ export class strategy extends plugin {
   /** #设置默认攻略1 */
   async strategy_setting () {
     let match = /^#?设置默认攻略([1-7])?$/.exec(this.e.msg)
-    let set = './plugins/expand-plugin/config/StrategyPro.set.yaml'
+    let set = './plugins/genshin/config/mys.set.yaml'
     let config = fs.readFileSync(set, 'utf8')
     let num = Number(match[1])
     if(isNaN(num)) {
