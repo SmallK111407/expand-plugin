@@ -13,7 +13,7 @@ export class CKorSKHelp extends plugin {
         priority: -100,
         rule: [
           {
-            reg: '^#*(体力|ck|cookie米游社|cookies|米游币|stoken|Stoken|sk)(帮助|教程|绑定)',
+            reg: '^#*(体力|ck|cookie|米游社|cookies|米游币|stoken|Stoken|sk)(帮助|教程|绑定)',
             fnc: 'Help'
           }
     ]
