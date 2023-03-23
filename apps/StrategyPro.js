@@ -2,7 +2,6 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import gsCfg from '../../../plugins/genshin/model/gsCfg.js'
 import common from '../../../lib/common/common.js'
-import { segment } from 'oicq'
 import lodash from 'lodash'
 import fs from 'node:fs'
 import fetch from 'node-fetch'

@@ -1,5 +1,4 @@
 import plugin from '../../../lib/plugins/plugin.js';
-import { segment } from 'oicq';
 import setting from '../models/setting.js';
 
 const _path = process.cwd() + '/plugins/expand-plugin'

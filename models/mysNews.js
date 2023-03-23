@@ -3,7 +3,6 @@ import fetch from 'node-fetch'
 import lodash from 'lodash'
 import puppeteer from '../../../lib/puppeteer/puppeteer.js'
 import common from '../../../lib/common/common.js'
-import { segment } from 'oicq'
 
 const _path = process.cwd()
 let emoticon
