@@ -24,5 +24,5 @@ export class CKorSKHelp extends plugin {
 
   async Help () {
     if (!this.appconfig.enable) { return false; }
-    await this.e.reply(`Cookie或Stoken绑定配置教程：${this.appconfig.docs}\n获取cookie或stoken后【私聊发送】进行绑定`)
+    await this.e.reply(`Cookie或Stoken绑定配置教程：${this.appconfig.docs}`)
     }}
