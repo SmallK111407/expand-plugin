@@ -27,12 +27,12 @@ export const helpList = [{
   group: '拓展命令',
   list: [{
     icon: 61,
-    title: '#记录帮助',
-    desc: '适配TRSS-Plugin的记录帮助教程图'
+    title: '#记录帮助 #备用记录帮助',
+    desc: '适配扫码登录的记录帮助教程图'
   }, {
     icon: 63,
-    title: '#刻晴攻略[1234567]',
-    desc: '七家的角色攻略，6可能因为图片过大发不出'
+    title: '#刻晴攻略[12345678]',
+    desc: '八家攻略，可能有bug'
   }, {
     icon: 66,
     title: '#明日素材',
@@ -40,7 +40,7 @@ export const helpList = [{
   }, {
     icon: 64,
     title: '#历史卡池(五星|四星)',
-    desc: '同云崽的#原石预估'
+    desc: '看作者更不更新'
   }]
 }, {
   group: '管理命令，仅管理员可用',

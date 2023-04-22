@@ -56,7 +56,7 @@ export class strategy extends plugin {
       [1812949]
     ]
 
-    this.source = ['西风驿站', '原神观测枢', '派蒙喵喵屋', 'OH是姜姜呀', '曉K', '轻松的蓝色三明治', '坤易']
+    this.source = ['西风驿站', '原神观测枢', '派蒙喵喵屋', 'OH是姜姜呀', '曉K', '轻松的蓝色三明治', '坤易', '婧枫赛赛']
 
     this.oss = '?x-oss-process=image//resize,s_1200/quality,q_90/auto-orient,0/interlace,1/format,jpg'
   }
@@ -118,7 +118,7 @@ export class strategy extends plugin {
   /** #攻略帮助 */
   async strategy_help () {
 
-    await this.e.reply('攻略帮助:\n#纳西妲攻略[1234567]\n#更新艾尔海森攻略[1234567]\n#设置默认攻略[1234567]\n示例: 心海攻略4\n\n攻略来源:\n1——西风驿站\n2——原神观测枢\n3——派蒙喵喵屋\n4——OH是姜姜呀\n5——曉K\n6——轻松的蓝色三明治\n7——坤易\n8——婧枫赛赛角色配队一图流')
+    await this.e.reply('攻略帮助:\n#纳西妲攻略[12345678]\n#更新艾尔海森攻略[12345678]\n#设置默认攻略[12345678]\n示例: 心海攻略4\n\n攻略来源:\n1——西风驿站\n2——原神观测枢\n3——派蒙喵喵屋\n4——OH是姜姜呀\n5——曉K\n6——轻松的蓝色三明治\n7——坤易\n8——婧枫赛赛(角色配队一图流)')
     
   }
 
@@ -129,7 +129,7 @@ export class strategy extends plugin {
     let config = fs.readFileSync(set, 'utf8')
     let num = Number(match[1])
     if(isNaN(num)) {
-    await this.e.reply('默认攻略设置方式为: \n#设置默认攻略[12345678] \n 请增加数字1-7其中一个')
+    await this.e.reply('默认攻略设置方式为: \n#设置默认攻略[12345678] \n 请增加数字1-8其中一个')
 		return
     }
     config = config.replace(/defaultSource: [1-8]/g, 'defaultSource: ' + Number(match[1]))
