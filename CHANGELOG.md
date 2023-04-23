@@ -1,4 +1,9 @@
 # 1.0.2
+* 添加`#随机时雨`，该命令会随机发送一张关于TRSS的图片
+  * 可在**config/RandomTRSS**设置或使用锅巴关闭
+  * 为本地图库，存储在**resources/TRSSimages/**内
+  * 仅娱乐，无讽刺意向
+  * **TRSS脚本**官网`https://TRSS.me`
 * 将`#ck帮助`系列命令回复直接改为使用【#扫码登录】
   * 可在**锅巴设置**内更改回复项
   * 或手动于**config/CKorSKHelp.yaml**修改
