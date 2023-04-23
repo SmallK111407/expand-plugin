@@ -1,6 +1,6 @@
 # 1.0.2
 * 添加`#随机时雨`，该命令会随机发送一张关于TRSS的图片
-  * 可在**config/RandomTRSS**设置或使用锅巴关闭
+  * 可在**config/RandomTRSS.yaml**设置或使用锅巴关闭
   * 为本地图库，存储在**resources/TRSSimages/**内
   * 仅娱乐，无讽刺意向
   * **TRSS脚本**官网`https://TRSS.me`
