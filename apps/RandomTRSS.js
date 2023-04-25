@@ -23,6 +23,7 @@ export class RandomTRSS extends plugin {
         return setting.getConfig("RandomTRSS");
     }
     async TRSS(e) {
+        if (!this.appconfig.enable) { return false; }
         const files = fs.readdirSync(`${_path}/resources/TRSSimages/`)
         let number = Math.floor(Math.random() * files.length)
         await this.reply(segment.image(`${_path}/resources/TRSSimages/${files[number]}`))
