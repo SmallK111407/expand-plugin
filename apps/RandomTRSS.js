@@ -1,6 +1,7 @@
 // https://TRSS.me yyds
 import plugin from '../../../lib/plugins/plugin.js'
 import setting from '../models/setting.js';
+import fs from "fs";
 
 const _path = process.cwd() + '/plugins/expand-plugin'
 
