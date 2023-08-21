@@ -18,28 +18,21 @@ export class RecordHelp extends plugin {
         {
           reg: '^#*(备用记录帮助|备用抽卡帮助|时雨记录帮助|时雨抽卡帮助)$',
           fnc: 'backhelp'
-        },
-        {
-          reg: '^#*(米哈游登陆|米游社登陆)$',
-          fnc: 'notice'
         }
       ]
     })
   }
   // 获取配置
   get appconfig() {
-    return setting.getConfig("RecordHelp");
+    return setting.getConfig("recordHelp");
   }
 
   async help() {
     if (!this.appconfig.enable) { return false; }
-    await this.e.reply(segment.image(`file:///${_path}/resources/RecordHelp/记录帮助.png`))
+    await this.e.reply(segment.image(`file:///${_path}/resources/recordHelp/记录帮助.png`))
   }
   async backhelp() {
     if (!this.appconfig.enable) { return false; }
-    await this.e.reply(segment.image(`file:///${_path}/resources/RecordHelp/记录帮助-TRSS.png`))
-  }
-  async notice() {
-    await this.e.reply('温馨提示：是登录不是登陆')
+    await this.e.reply(segment.image(`file:///${_path}/resources/recordHelp/记录帮助-TRSS.png`))
   }
 }
