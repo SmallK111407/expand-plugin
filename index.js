@@ -1,4 +1,3 @@
-import { Data, Version } from './components/index.js'
 import fs from 'node:fs'
 import chalk from 'chalk'
 
