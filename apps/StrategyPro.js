@@ -14,7 +14,7 @@ export class strategy extends plugin {
       name: '[拓展插件]米游社攻略Pro',
       dsc: '米游社攻略图Pro',
       event: 'message',
-      priority: 100,
+      priority: 10,
       rule: [
         {
           reg: '^#?(更新)?\\S+攻略([1-7])?$',
