@@ -1,12 +1,6 @@
 # Expand-Plugin
 
-[![Stars](https://img.shields.io/github/stars/SmallK111407/expand-plugin?color=yellow&label=收藏)](../../stargazers)
-
-[![访问量](https://profile-counter.glitch.me/SmallK111407-Expand-Plugin/count.svg)](https://github.com/SmallK111407/expand-plugin)
-
-## Expand-Plugin说明
-
-**Expand-Plugin**是一个Yunzai-Bot的拓展插件，主要基于云崽提供部分拓展功能，如刻晴攻略5、具体可见`#拓展帮助`
+## 本插件已跑路！今后仅做存留功能维护适配！
 
 ## 安装与更新
 
