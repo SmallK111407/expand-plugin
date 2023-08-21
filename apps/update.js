@@ -2,6 +2,7 @@ import plugin from "../../../lib/plugins/plugin.js";
 import { createRequire } from "module";
 import lodash from "lodash";
 import { Restart } from '../../other/restart.js'
+import common from "../../../lib/common/common.js"
 
 const require = createRequire(import.meta.url);
 const { exec, execSync } = require("child_process");
@@ -138,12 +139,8 @@ export class update extends plugin {
 
     if (log.length <= 0) return "";
 
-    let end = "";
-    end =
-      "更多详细信息，请前往gitee查看\nhttps://gitee.com/SmallK111407/expand-plugin/blob/master/CHANGELOG.md";
-
-    log = await this.makeForwardMsg(`拓展插件更新日志，共${line}条`, log, end);
-
+    let end = "更多详细信息，请前往gitee查看\nhttps://gitee.com/SmallK111407/expand-plugin/commits/master";
+    log = await common.makeForwardMsg(this.e, [log, end], `${plugin}更新日志，共${line}条`)
     return log;
   }
 
