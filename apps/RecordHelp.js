@@ -24,15 +24,15 @@ export class RecordHelp extends plugin {
   }
   // 获取配置
   get appconfig() {
-    return setting.getConfig("recordHelp");
+    return setting.getConfig("RecordHelp");
   }
 
   async help() {
     if (!this.appconfig.enable) { return false; }
-    await this.e.reply(segment.image(`file:///${_path}/resources/recordHelp/记录帮助.png`))
+    await this.e.reply(segment.image(`file:///${_path}/resources/RecordHelp/记录帮助.png`))
   }
   async backhelp() {
     if (!this.appconfig.enable) { return false; }
-    await this.e.reply(segment.image(`file:///${_path}/resources/recordHelp/记录帮助-TRSS.png`))
+    await this.e.reply(segment.image(`file:///${_path}/resources/RecordHelp/记录帮助-TRSS.png`))
   }
 }
